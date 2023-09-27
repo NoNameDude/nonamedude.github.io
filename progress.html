@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>dingo-game.ddns</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+        <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-flat.css">
+        <style>
+            body,h1 {font-family: "Lato", sans-serif}
+            .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+            * {box-sizing: border-box}
+
+            .container {
+              width: 100%;
+              background-color: #ddd;
+              border-style: solid;
+              border-color: black;
+            }
+            
+            .skills {
+              text-align: right;
+              padding-top: 10px;
+              padding-bottom: 10px;
+              color: rgb(255, 255, 255);
+            }
+            /*Game*/
+            .event_mod {width: 0%; background-color: #20b981;}
+            .spawn {width: 0%; background-color: #2196F3;}
+            .custom_commands {width: 0%; background-color: #f44336;}
+            .welcome_message {width: 0%; background-color: #808080;}
+            
+            /*Website*/
+            .ingame_chat {width: 0%; background-color: #04AA6D;}
+            .current_event_page {width: 0%; background-color: #2196F3;}
+            .server_info {width: 0%; background-color: #f44336;}
+            .show_best_players {width: 0%; background-color: #808080;}
+            .donation {width: 95%; background-color: #990f99;}
+            /*Others*/
+            .discord_bot {width: 60%; background-color: #2196F3;}
+        </style>
+    </head>
+    <body>
+        
+        <!-- Navbar -->
+        <div class="w3-top">
+            <div class="w3-bar w3-teal w3-card w3-left-align w3-large">
+                <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+                <a href="index.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Home</a>
+                <a href="progress.html" class="w3-bar-item w3-button w3-padding-large w3-white">Progress</a>
+                <a href="donation.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Donation</a>
+            </div>
+      
+            <!-- Navbar on small screens -->
+            <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+                <a href="index.html" class="w3-bar-item w3-button w3-padding-large">Home</a>
+                <a href="progress.html" class="w3-bar-item w3-button w3-padding-large">Progress</a>
+                <a href="donation.html" class="w3-bar-item w3-button w3-padding-large">Donation</a>
+            </div>
+        </div>
+        
+        <div class="w3-row-padding w3-flat-midnight-blue w3-padding-64 w3-container">
+            <h1>Game</h1>      
+            <p>Event mod</p>
+            <div class="container">
+              <div class="skills event_mod">0%</div>
+            </div>
+            
+            <p>Spawn</p>
+            <div class="container">
+              <div class="skills spawn">0%</div>
+            </div>
+            
+            <p>Chat commands</p>
+            <div class="container">
+              <div class="skills custom_commands">0%</div>
+            </div>
+            
+            <p>Welcome Message mod</p>
+            <div class="container">
+              <div class="skills welcome_message">0%</div>
+            </div>
+        </div>
+        
+        <div class="w3-row-padding w3-flat-wet-asphalt w3-padding-64 w3-container">
+            <h1>Website</h1>      
+            <p>Ingame chat shown on web</p>
+            <div class="container">
+              <div class="skills ingame_chat">0%</div>
+            </div>
+            
+            <p>Current event page</p>
+            <div class="container">
+              <div class="skills current_event_page">0%</div>
+            </div>
+            
+            <p>Server information page</p>
+            <div class="container">
+              <div class="skills server_info">0%</div>
+            </div>
+            
+            <p>Rank page</p>
+            <div class="container">
+              <div class="skills show_best_players">0%</div>
+            </div>
+            
+            <p>Donations page</p>
+            <div class="container">
+              <div class="skills donation">95%</div>
+            </div>
+        </div>
+        
+        <div class="w3-row-padding w3-blue-grey w3-padding-64 w3-container">
+            <h1>Others</h1>      
+            <p>Discord bot</p>
+            <div class="container">
+              <div class="skills discord_bot">60%</div>
+            </div>
+        </div>
+        
+        <script>
+        // Used to toggle the menu on small screens when clicking on the menu button
+            function myFunction() {
+                var x = document.getElementById("navDemo");
+                if (x.className.indexOf("w3-show") == -1) {
+                    x.className += " w3-show";
+                } else { 
+                    x.className = x.className.replace(" w3-show", "");
+                }
+            }
+        </script>
+    </body>
+</html>
