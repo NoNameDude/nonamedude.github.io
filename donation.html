@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>dingo-game.ddns</title> 
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+            #head {
+                text-align: center;
+                color: white;
+            }
+            #myProgress {
+                width: 100%;
+                background-color: #ddd;
+            }
+        
+            #myBar {
+              width: 1%;
+              height: 30px;
+              text-align: center; 
+              color: white;
+              background-color: #16bd37;
+            }
+            /* Set a background color */
+            body {
+                background-color: #000000;
+                font-family: Helvetica, sans-serif;
+            }
+            /* The actual goalline (the vertical ruler) */
+            .goalline {
+                position: relative;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+            /* The actual goalline (the vertical ruler) */
+            .goalline::after {
+                content: '';
+                position: absolute;
+                width: 6px;
+                background-color: rgb(255, 255, 255);
+                top: 0;
+                bottom: 0;
+                left: 50%;
+                margin-left: -3px;
+            }
+            /* Container around content */
+            .container {
+                padding: 10px 40px;
+                position: relative;
+                background-color: inherit;
+                width: 50%;
+            }
+            /* The circles on the goalline */
+            .container::after {
+                content: ''; 
+                position: absolute;
+                width: 25px;
+                height: 25px;
+                right: -17px;
+                background-color: white;
+                border: 4px solid #99c3f7;
+                top: 15px;
+                border-radius: 50%;
+                z-index: 1;
+            }
+            /* Place the container to the left */
+            .left {
+                left: 0;
+            }
+            /* Place the container to the right */
+            .right {
+                left: 50%;
+            }
+            /* Add arrows to the left container (pointing right) */
+            .left::before {
+                content: " ";
+                height: 0;
+                position: absolute;
+                top: 22px;
+                width: 0;
+                z-index: 1;
+                right: 30px;
+                border: medium solid white;
+                border-width: 10px 0 10px 10px;
+                border-color: transparent transparent transparent white;
+            }
+            /* Add arrows to the right container (pointing left) */
+            .right::before {
+                content: " ";
+                height: 0;
+                position: absolute;
+                top: 22px;
+                width: 0;
+                z-index: 1;
+                left: 30px;
+                border: medium solid white;
+                border-width: 10px 10px 10px 0;
+                border-color: transparent white transparent transparent;
+            }
+            /* Fix the circle for containers on the right side */
+            .right::after {
+                left: -16px;
+            }
+            /* The actual content */
+            .content {
+                padding: 20px 30px;
+                background-color: rgb(168, 166, 166);
+                position: relative;
+                border-radius: 6px;
+            
+            }
+            /* Media queries - Responsive goalline on screens less than 600px wide */
+            @media screen and (max-width: 600px) {
+                /* Place the goalline to the left */
+                .goalline::after {
+                  left: 31px;
+                }
+                /* Full-width containers */
+                .container {
+                    width: 100%;
+                    padding-left: 70px;
+                    padding-right: 25px;
+                }
+                /* Make sure that all arrows are pointing leftwards */
+                .container::before {
+                    left: 60px;
+                    border: medium solid white;
+                    border-width: 10px 10px 10px 0;
+                    border-color: transparent white transparent transparent;
+                }
+                /* Make sure all circles are at the same spot */
+                .left::after, .right::after {
+                    left: 15px;
+                }
+                h2 {
+                    font-size: 100%;
+                }
+                /* Make all right containers behave like the left ones */
+                .right {
+                    left: 0%;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        
+        <!-- Navbar -->
+        <div class="w3-top">
+            <div class="w3-bar w3-teal w3-card w3-left-align w3-large">
+                <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+                <a href="index.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Home</a>
+                <a href="progress.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Progress</a>
+                <a href="donation.html" class="w3-bar-item w3-button w3-padding-large w3-white">Donation</a>
+            </div>
+            
+            <!-- Navbar on small screens -->
+            <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+                <a href="index.html" class="w3-bar-item w3-button w3-padding-large">Home</a>
+                <a href="progress.html" class="w3-bar-item w3-button w3-padding-large">Progress</a>
+                <a href="donation.html" class="w3-bar-item w3-button w3-padding-large">Donation</a>
+            </div>
+        </div>
+        <br>
+        <br>
+        <body>
+            <div id="head">
+                <h1 id="bar_head"></h1>
+                <h2>Donate now in dingocoins DQfeFvhKz6WsWG79W9qr47zMZtMYRSXx7v</h2>
+            </div>
+            <div id="myProgress">
+                <div id="myBar"></div>
+            </div>
+            <br>
+            <div class="goalline">
+                <div class="container left">
+                    <div class="content">
+                      <h2>50K Dingocoins</h2>
+                      <p>I can now buy my self a coffee to work on stuff</p>
+                    </div>
+                </div>
+                <div class="container right">
+                    <div class="content">
+                      <h2>200K Dingocoins</h2>
+                      <p>I can now buy a coffee and some paper to make notes</p>
+                    </div>
+                </div>
+                <div class="container left">
+                  <div class="content">
+                    <h2>500K Dingocoins</h2>
+                    <p>I can now pay off my electric computer bills</p>
+                  </div>
+                </div>
+                <div class="container right">
+                  <div class="content">
+                    <h2>700K Dingocoins</h2>
+                    <p>I can now pay off my eletric computer and tv bill</p>
+                  </div>
+                </div>
+                <div class="container left">
+                  <div class="content">
+                    <h2>800K Dingocoins</h2>
+                    <p>I can now do more giveaways in the game server</p>
+                  </div>
+                </div>
+                <div class="container right">
+                  <div class="content">
+                    <h2>1Mio Dingocoins</h2>
+                    <p>I can now slowly see this is a small job</p>
+                  </div>
+                </div>
+                <div class="container left">
+                  <div class="content">
+                    <h2>1.5Mio Dingocoins</h2>
+                    <p>Now I am very motivated to keep things on</p>
+                  </div>
+                </div>
+                <div class="container right">
+                  <div class="content">
+                    <h2>3Mio</h2>
+                    <p>I can now search for part time devs to help me</p>
+                  </div>
+                </div>
+                <div class="container left">
+                    <div class="content">
+                      <h2>10Mio</h2>
+                      <p>I can now hire devs to help me</p>
+                    </div>
+                </div>
+                <div class="container right">
+                    <div class="content">
+                      <h2>25Mio</h2>
+                      <p>I can now hire devs to help me pay my electric computer bills and see this as a second job</p>
+                    </div>
+                </div>
+            </div>
+              
+        </body>
+        
+        <script>
+        // Used to toggle the menu on small screens when clicking on the menu button
+            function myFunction() {
+                var x = document.getElementById("navDemo");
+                if (x.className.indexOf("w3-show") == -1) {
+                    x.className += " w3-show";
+                } else { 
+                    x.className = x.className.replace(" w3-show", "");
+                }
+            }
+            
+            function get_coins_count() {
+                var request = new XMLHttpRequest();
+                request.open('GET', 'https://explorer.dingocoin.com/ext/getbalance/DQfeFvhKz6WsWG79W9qr47zMZtMYRSXx7v', false);  // `false` makes the request synchronous
+                request.send(null);
+                            
+                if (request.status === 200) {
+                  var balance = request.responseText;
+                }
+                return balance
+            }
+            var i = 0;
+            var goal = 25000000
+            var coins_p = (get_coins_count()/goal)*100
+            function move_progress_bar() {
+                if (i == 0) {
+                    i = 1;
+                    var elem = document.getElementById("myBar");
+                    var width = 0.1;
+                    var id = setInterval(frame, 15);
+                    function frame() {
+                        if (width >= 100 || width >= coins_p) {
+                            clearInterval(id);
+                            i = 0;
+                        } else {
+                            width=width+0.1;
+                            elem.style.width = width + "%";
+                            elem.innerHTML = Math.round(width)  + "%";
+                        }
+                    }
+                }
+            }
+            var bar_head = document.getElementById("bar_head");
+            bar_head.innerHTML = `${get_coins_count()} / ${goal}`;
+            
+            //mark the reached goals
+            var coins = get_coins_count()
+            const element = document.getElementsByClassName("content");
+            if (coins >= 50000) {  
+                element[0].style.backgroundColor = "white";
+            }
+            if (coins >= 200000) {  
+                element[1].style.backgroundColor = "white";
+            }
+            if (coins >= 300000) {  
+                element[2].style.backgroundColor = "white";
+            }
+            if (coins >= 700000) {  
+                element[3].style.backgroundColor = "white";
+            }
+            if (coins >= 800000) {  
+                element[4].style.backgroundColor = "white";
+            }
+            if (coins >= 1000000) {  
+                element[5].style.backgroundColor = "white";
+            }
+            if (coins >= 1500000) {  
+                element[6].style.backgroundColor = "white";
+            }
+            if (coins >= 3000000) {  
+                element[7].style.backgroundColor = "white";
+            }
+            if (coins >= 10000000) {  
+                element[8].style.backgroundColor = "white";
+            }
+            if (coins >= 25000000) {  
+                element[9].style.backgroundColor = "white";
+            }
+            //
+            
+            //load the progress bar on start
+            window.onload = function () {
+                move_progress_bar()
+            };
+            //
+        </script>
+    </body>
+</html>
+
